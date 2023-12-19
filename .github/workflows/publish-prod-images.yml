@@ -76,11 +76,17 @@ jobs:
       
         # Setup Rust, use the x86_64-apple-darwin target but the rest can be customized.
         - 
-          name: Setup Rust
+          name: Setup Rust x86_64
           uses: ATiltedTree/setup-rust@v1
           with:
             rust-version: stable
-            targets: x86_64-apple-darwin aarch64-apple-darwin
+            targets: x86_64-apple-darwin
+        - 
+          name: Setup Rust Arm
+          uses: ATiltedTree/setup-rust@v1
+          with:
+            rust-version: stable
+            targets: aarch64-apple-darwin
 
         # Use the v1 of this action
         - 
