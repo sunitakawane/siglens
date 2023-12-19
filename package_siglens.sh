@@ -44,7 +44,8 @@ for platform in "${platforms[@]}"; do
     fi
     if [ ${GOOS} = "darwin" ]; then
         if [ ${GOARCH} = "arm64" ]; then
-            export CC="clang"
+            export CC=o64-clang
+            export CXX=o64-clang++
             export CGO_CFLAGS="-arch ${GOARCH}"
             export CGO_LDFLAGS="-arch ${GOARCH}"
             export CFLAGS=-Qunused-arguments
@@ -54,7 +55,8 @@ for platform in "${platforms[@]}"; do
             go build -o siglens cmd/siglens/main.go
         fi
         if [ ${GOARCH} = "amd64" ]; then
-            export CC="clang"
+            export CC=o64-clang
+            export CXX=o64-clang++
             export CGO_CFLAGS="-arch x86_64"
             export CGO_LDFLAGS="-arch x86_64"
             export CFLAGS=-Qunused-arguments
