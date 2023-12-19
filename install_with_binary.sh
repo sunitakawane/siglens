@@ -53,9 +53,22 @@ latest_version=`\
 display_step 3 "Fetching latest binary for $os-$arch and version $latest_version"
 
 url="https://github.com/siglens/siglens/releases/download/$latest_version/siglens-$latest_version-$os-$arch.tar.gz"
-wget $url
-if [[ $? -ne 0 ]]; then
-    echo "wget failed to get latest binary from $url"
+
+if type wget >/dev/null 2>&1; then
+    wget --no-check-certificate -q $url
+    if [[ $? -ne 0 ]]; then
+      echo "wget failed to get latest binary from $url"
+      exit 1; 
+    fi
+elif type curl >/dev/null 2>&1; then
+  echo "curl -OLJ $url"
+  curl -OLJ $url
+  if [[ $? -ne 0 ]]; then
+    echo "curl failed to get latest binary from $url"
+    exit 1; 
+  fi
+else
+    echo 'wget or curl not installed, make sure the system can use the "wget" or "curl" command'
     exit 1; 
 fi
 
