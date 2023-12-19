@@ -52,10 +52,7 @@ for platform in "${platforms[@]}"; do
         export CGO_ENABLED=1
         export CGO_CFLAGS=$CGO_CFLAGS
         export CGO_CXXFLAGS=$CGO_CXXFLAGS
-        export CC=clang 
-        export CXX=clang++
-        export CGO_ENABLED=1
-        export GOGCCFLAGS+=" -Qunused-arguments"
+        export GOGCCFLAGS="-fPIC -arch ${GOARCH} -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/mh/02gmkb756x15018g919jcg980000gn/T/go-build4031963624=/tmp/go-build -gno-record-gcc-switches -fno-common"
         echo "Compiling SigLens for GOOS=${GOOS} and GOARCH=${GOARCH}."
         go build -o siglens cmd/siglens/main.go
     fi
