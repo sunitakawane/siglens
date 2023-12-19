@@ -47,13 +47,11 @@ for platform in "${platforms[@]}"; do
         CXX="clang++"
         CGO_CFLAGS="-g -O2"
         CGO_CXXFLAGS="-g -O2"
-        GOGCCFLAGS=
         export CC=$CC
         export CXX=$CXX
         export CGO_ENABLED=1
         export CGO_CFLAGS=$CGO_CFLAGS
         export CGO_CXXFLAGS=$CGO_CXXFLAGS
-        export GOGCCFLAGS=$GOGCCFLAGS
         export CC=clang 
         export CXX=clang++
         export CGO_ENABLED=1
