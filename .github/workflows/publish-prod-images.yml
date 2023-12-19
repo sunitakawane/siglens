@@ -80,6 +80,7 @@ jobs:
           uses: ATiltedTree/setup-rust@v1
           with:
             rust-version: stable
+            targets: x86_64-apple-darwin aarch64-apple-darwin
 
         # Use the v1 of this action
         - 
