@@ -52,17 +52,15 @@ for platform in "${platforms[@]}"; do
             go build -o siglens cmd/siglens/main.go
         fi
         if [ ${GOARCH} = "amd64" ]; then
-            export CC="clang -arch x86-64"
-            export CFLAGS+=[-Wno-error=unused-command-line-argument,-Qunused-arguments]
-            export CPPFLAGS+=[-Wno-error=unused-command-line-argument,-Qunused-arguments]
+            export CC="clang"
+            export CFLAGS="-Qunused-arguments"
             export CGO_ENABLED=1
             echo "Compiling SigLens for GOOS=${GOOS} and GOARCH=${GOARCH}"
             go build -o siglens cmd/siglens/main.go
         fi
         if [ ${GOARCH} = "x86_64" ]; then
-            export CC="clang -arch x86-64"
-            export CFLAGS+=[-Wno-error=unused-command-line-argument,-Qunused-arguments]
-            export CPPFLAGS+=[-Wno-error=unused-command-line-argument,-Qunused-arguments]
+            export CC="clang"
+            export CFLAGS="-Qunused-arguments"
             export CGO_ENABLED=1
             echo "Compiling SigLens for GOOS=${GOOS} and GOARCH=${GOARCH}"
             go build -o siglens cmd/siglens/main.go
