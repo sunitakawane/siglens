@@ -45,16 +45,13 @@ for platform in "${platforms[@]}"; do
     if [ ${GOOS} = "darwin" ]; then
         CC="clang"
         CXX="clang++"
-        CGO_CFLAGS="-g -O2"
-        CGO_CXXFLAGS="-g -O2"
         export CC=$CC
         export CXX=$CXX
         export CGO_ENABLED=1
-        export CGO_CFLAGS=$CGO_CFLAGS
-        export CGO_CXXFLAGS=$CGO_CXXFLAGS
-        export GOGCCFLAGS="-fPIC -arch ${GOARCH} -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/mh/02gmkb756x15018g919jcg980000gn/T/go-build4031963624=/tmp/go-build -gno-record-gcc-switches -fno-common"
+        export CFLAGS=-Qunused-arguments
+        export CPPFLAGS=-Qunused-arguments
         echo "Compiling SigLens for GOOS=${GOOS} and GOARCH=${GOARCH}."
-        go build -o siglens cmd/siglens/main.go
+        sudo -E go build -o siglens cmd/siglens/main.go
     fi
 
     if [ $? -eq 0 ]
