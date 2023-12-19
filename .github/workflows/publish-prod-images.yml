@@ -84,7 +84,7 @@ jobs:
           run: |
             chmod +x package_siglens.sh
             less package_siglens.sh
-            ./package_siglens.sh -p linux/amd64,linux/arm64,darwin/amd64,darwin/arm64
+            ./package_siglens.sh -p linux/amd64,linux/arm64,darwin/arm64
         - name: release
           uses: actions/create-release@v1
           id: create_release
