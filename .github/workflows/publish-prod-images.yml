@@ -67,12 +67,7 @@ jobs:
           uses: actions/setup-go@v3
           with:
             go-version: '>=1.18.0'
-        -
-          name: Setup zig
-          uses: goto-bus-stop/setup-zig@v2
-        - 
-          name: install cross compiler for linux/amd64
-          run: sudo apt-get -y install build-essential
+
         - 
           name: version
           run: |
