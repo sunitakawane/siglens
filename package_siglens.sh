@@ -48,11 +48,11 @@ for platform in "${platforms[@]}"; do
         export CC=$CC
         export CXX=$CXX
         export CGO_ENABLED=1
-        export CFLAGS=[-Werror,-Wunused-command-line-argument]
-        export CPPFLAGS=[-Werror,-Wunused-command-line-argument]
-        export ARCHFLAGS=[-Werror,-Wunused-command-line-argument]
+        export CFLAGS+=[-Werror,-Wunused-command-line-argument,-Qunused-arguments]
+        export CPPFLAGS+=[-Werror,-Wunused-command-line-argument,-Qunused-arguments]
+        export ARCHFLAGS+=[-Wno-error=unused-command-line-argument,-Qunused-arguments]
         echo "Compiling SigLens for GOOS=${GOOS} and GOARCH=${GOARCH}."
-        sudo -E go build -o siglens cmd/siglens/main.go
+        go build -o siglens cmd/siglens/main.go
     fi
 
     if [ $? -eq 0 ]
