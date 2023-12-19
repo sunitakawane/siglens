@@ -45,8 +45,8 @@ for platform in "${platforms[@]}"; do
     if [ ${GOOS} = "darwin" ]; then
         if [ ${GOARCH} = "arm64" ]; then
             export CC="clang -arch ${GOARCH}"
-            export CFLAGS="-Qunused-arguments"
-            export CPPFLAGS="-Qunused-arguments"
+            export CFLAGS=-Qunused-arguments
+	        export CPPFLAGS=-Qunused-arguments
             export CGO_ENABLED=1
             export GOGCCFLAGS="-m64 -mthreads -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -gno-record-gcc-switches"
             echo "Compiling SigLens for CGO_ENABLED=1, GOOS=${GOOS} and GOARCH=${GOARCH}"
@@ -54,8 +54,8 @@ for platform in "${platforms[@]}"; do
         fi
         if [ ${GOARCH} = "amd64" ]; then
             export CC="clang"
-            export CFLAGS="-Qunused-arguments"
-            export CPPFLAGS="-Qunused-arguments"
+            export CFLAGS=-Qunused-arguments
+	        export CPPFLAGS=-Qunused-arguments
             export CGO_ENABLED=1
             export GOGCCFLAGS="-m64 -mthreads -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -gno-record-gcc-switches"
             echo "Compiling SigLens for CGO_ENABLED=1, GOOS=${GOOS} and GOARCH=${GOARCH}"
