@@ -63,8 +63,8 @@ $(document).ready(async function () {
     }
 
     $('#add-panel-btn, .close-widget-popup').click(() => {
-        let pflag= `{{ .PanelFlag }}`;
-        if(pflag === 'false' && localPanels.length >= 10 ){
+        let pflag = `{{ .PanelFlag }}`;
+        if (pflag === 'false' && localPanels.length >= 10) {
             return;
         }
         $('#add-widget-options').toggle();
@@ -93,8 +93,8 @@ $(document).ready(async function () {
         if ($(this).hasClass('active')) {
             return;
         } else {
-            let pflag= `{{ .PanelFlag }}`;
-            if(pflag === 'false' && localPanels.length >= 10 ){
+            let pflag = `{{ .PanelFlag }}`;
+            if (pflag === 'false' && localPanels.length >= 10) {
                 return;
             }
             $(this).addClass('active');
